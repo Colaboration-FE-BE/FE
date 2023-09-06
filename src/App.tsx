@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
-import Navbar from "./component/Navbar";
 import DashboardPage from "./pages/DashboardPage";
+import MenteePage from "./pages/MenteePage";
+import UserPage from "./pages/UserPage";
+import ClassPage from "./pages/ClassPage";
 
 const App = () => {
   axios.defaults.baseURL = "https://fakestoreapi.com/";
@@ -10,7 +12,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<DashboardPage/>} path="/"/>
+      <Route element={<DashboardPage/>}  path="/"/>
+        <Route element={<DashboardPage/>}  path="/dashboard"/>
+       
+        <Route element={<MenteePage/>} path="/mentee"/>
+        <Route element={<UserPage/>} path="/user"/>
+        <Route element={<ClassPage/>} path="/class"/>
         {/* <Route element={<Navbar greeting={""} onClick={function (): void {
           throw new Error("Function not implemented.");
         } } toggleSettingsDropdown={function (): void {
