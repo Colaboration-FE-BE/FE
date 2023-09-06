@@ -1,275 +1,133 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import { Helmet } from "react-helmet";
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  let pathname = window.location.pathname;
+  useEffect(() => {
+    pathname = window.location.pathname;
+  }, [window.location.pathname]);
+
   return (
     <aside
-  id="layout-menu"
-  className="layout-menu menu-vertical menu bg-menu-theme"
->
-  <div className="app-brand demo">
-    <a href="index.html" className="app-brand-link">
-      <span className="app-brand-logo demo">
-        <svg
-          width={25}
-          viewBox="0 0 25 42"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
-          <defs>
-            <path
-              d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z"
-              id="path-1"
-            />
-            <path
-              d="M5.47320593,6.00457225 C4.05321814,8.216144 4.36334763,10.0722806 6.40359441,11.5729822 C8.61520715,12.571656 10.0999176,13.2171421 10.8577257,13.5094407 L15.5088241,14.433041 L18.6192054,7.984237 C15.5364148,3.11535317 13.9273018,0.573395879 13.7918663,0.358365126 C13.5790555,0.511491653 10.8061687,2.3935607 5.47320593,6.00457225 Z"
-              id="path-3"
-            />
-            <path
-              d="M7.50063644,21.2294429 L12.3234468,23.3159332 C14.1688022,24.7579751 14.397098,26.4880487 13.008334,28.506154 C11.6195701,30.5242593 10.3099883,31.790241 9.07958868,32.3040991 C5.78142938,33.4346997 4.13234973,34 4.13234973,34 C4.13234973,34 2.75489982,33.0538207 2.37032616e-14,31.1614621 C-0.55822714,27.8186216 -0.55822714,26.0572515 -4.05231404e-15,25.8773518 C0.83734071,25.6075023 2.77988457,22.8248993 3.3049379,22.52991 C3.65497346,22.3332504 5.05353963,21.8997614 7.50063644,21.2294429 Z"
-              id="path-4"
-            />
-            <path
-              d="M20.6,7.13333333 L25.6,13.8 C26.2627417,14.6836556 26.0836556,15.9372583 25.2,16.6 C24.8538077,16.8596443 24.4327404,17 24,17 L14,17 C12.8954305,17 12,16.1045695 12,15 C12,14.5672596 12.1403557,14.1461923 12.4,13.8 L17.4,7.13333333 C18.0627417,6.24967773 19.3163444,6.07059163 20.2,6.73333333 C20.3516113,6.84704183 20.4862915,6.981722 20.6,7.13333333 Z"
-              id="path-5"
-            />
-          </defs>
-          <g
-            id="g-app-brand"
-            stroke="none"
-            strokeWidth={1}
-            fill="none"
-            fillRule="evenodd"
-          >
-            <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
-              <g id="Icon" transform="translate(27.000000, 15.000000)">
-                <g id="Mask" transform="translate(0.000000, 8.000000)">
-                  <mask id="mask-2" fill="white">
-                    <use xlinkHref="#path-1" />
-                  </mask>
-                  <use fill="#696cff" xlinkHref="#path-1" />
-                  <g id="Path-3" mask="url(#mask-2)">
-                    <use fill="#696cff" xlinkHref="#path-3" />
-                    <use fillOpacity="0.2" fill="#FFFFFF" xlinkHref="#path-3" />
-                  </g>
-                  <g id="Path-4" mask="url(#mask-2)">
-                    <use fill="#696cff" xlinkHref="#path-4" />
-                    <use fillOpacity="0.2" fill="#FFFFFF" xlinkHref="#path-4" />
-                  </g>
-                </g>
-                <g
-                  id="Triangle"
-                  transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) "
-                >
-                  <use fill="#696cff" xlinkHref="#path-5" />
-                  <use fillOpacity="0.2" fill="#FFFFFF" xlinkHref="#path-5" />
-                </g>
-              </g>
-            </g>
-          </g>
-        </svg>
-      </span>
-      <span className="app-brand-text demo menu-text fw-bolder ms-2">
-        Sneat
-      </span>
-    </a>
-    <a
-    //   href="javascript:void(0);"
-      className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none"
+      id="layout-menu"
+      className="layout-menu menu-vertical menu bg-menu-theme"
+      data-bg-class="bg-menu-theme"
+      style={{ backgroundColor: 'white', borderRightWidth: 20 }}
     >
-      <i className="bx bx-chevron-left bx-sm align-middle" />
-    </a>
-  </div>
-  <div className="menu-inner-shadow" />
-  <ul className="menu-inner py-1">
-    {/* Dashboard */}
-    <li className="menu-item active">
-      <a href="index.html" className="menu-link">
-        <i className="menu-icon tf-icons bx bx-home-circle" />
-        <div data-i18n="Analytics">Dashboard</div>
-      </a>
-    </li>
-    {/* Layouts */}
-    <li className="menu-item">
-      <a
-    //    href="javascript:void(0);"
-        className="menu-link menu-toggle">
-        <i className="menu-icon tf-icons bx bx-layout" />
-        <div data-i18n="Layouts">Layouts</div>
-      </a>
-      <ul className="menu-sub">
-        <li className="menu-item">
-          <a href="layouts-without-menu.html" className="menu-link">
-            <div data-i18n="Without menu">Without menu</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a href="layouts-without-navbar.html" className="menu-link">
-            <div data-i18n="Without navbar">Without navbar</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a href="layouts-container.html" className="menu-link">
-            <div data-i18n="Container">Container</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a href="layouts-fluid.html" className="menu-link">
-            <div data-i18n="Fluid">Fluid</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a href="layouts-blank.html" className="menu-link">
-            <div data-i18n="Blank">Blank</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li className="menu-header small text-uppercase">
-      <span className="menu-header-text">Pages</span>
-    </li>
-    <li className="menu-item">
-      <a 
-    //   href="javascript:void(0);" 
-      className="menu-link menu-toggle">
-        <i className="menu-icon tf-icons bx bx-dock-top" />
-        <div data-i18n="Account Settings">Account Settings</div>
-      </a>
-      <ul className="menu-sub">
-        <li className="menu-item">
-          <a href="pages-account-settings-account.html" className="menu-link">
-            <div data-i18n="Account">Account</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a
-            href="pages-account-settings-notifications.html"
-            className="menu-link"
+      <Helmet htmlAttributes={{ class: `light-style layout-menu-fixed ${isOpen ? `layout-menu-expanded` : ''}` }} />
+      <div className="app-brand demo " style={{ minHeight: 150 }}>
+        <Link to="/dashboard" className="app-brand-link">
+          <span className="app-brand-logo demo" style={{ background: 'red' }}>
+            <img style={{ width: "150px" }} src="data:image/png;base64,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" />
+          </span>
+          <span className="app-brand-text demo menu-text fw-bolder ms-2">
+            {/* Altera Academy */}
+          </span>
+        </Link>
+        <a
+          onClick={() => setIsOpen(!isOpen)}
+          style={{ color: 'red' }}
+          className="layout-menu-toggle menu-link text-large ms-auto d-xl-none"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={24}
+            height={24}
+            viewBox="0 0 24 24"
+            style={{
+              fill: "rgba(0, 0, 0, 1)", transform: "",
+              //  msfilter: "" 
+            }}
           >
-            <div data-i18n="Notifications">Notifications</div>
-          </a>
+            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm2.707 14.293-1.414 1.414L7.586 12l5.707-5.707 1.414 1.414L10.414 12l4.293 4.293z" />
+          </svg>
+
+        </a>
+      </div>
+
+      <div className="menu-inner-shadow" />
+      <ul className="menu-inner py-1 ps ps--active-y">
+        <li  className={`${pathname.match('/dashboard') ? 'menu-item active' : 'menu-item'}`}>
+          <Link to="/dashboard" className="menu-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              style={{
+                fill: "rgba(0, 0, 0, 1)", transform: "",
+                //  msfilter: "" 
+              }}
+            >
+              <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm9-8.586 6 6V15l.001 5H6v-9.585l6-6.001z" />
+              <path d="M12 17c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z" />
+            </svg>
+
+            <div data-i18n="Analytics">Dashboard</div>
+          </Link>
         </li>
-        <li className="menu-item">
-          <a
-            href="pages-account-settings-connections.html"
-            className="menu-link"
-          >
-            <div data-i18n="Connections">Connections</div>
-          </a>
+        <li className={`${pathname.match('/user') ? 'menu-item active' : 'menu-item'}`}>
+          <Link to="/user" className="menu-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              style={{
+                fill: "rgba(0, 0, 0, 1)", transform: "",
+                //  msfilter: "" 
+              }}
+            >
+              <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm9-8.586 6 6V15l.001 5H6v-9.585l6-6.001z" />
+              <path d="M12 17c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z" />
+            </svg>
+
+            <div data-i18n="Analytics">User</div>
+          </Link>
         </li>
-      </ul>
-    </li>
-    <li className="menu-item">
-      <a 
-    //   href="javascript:void(0);" 
-      className="menu-link menu-toggle">
-        <i className="menu-icon tf-icons bx bx-lock-open-alt" />
-        <div data-i18n="Authentications">Authentications</div>
-      </a>
-      <ul className="menu-sub">
-        <li className="menu-item">
-          <a href="auth-login-basic.html" className="menu-link" target="_blank">
-            <div data-i18n="Basic">Login</div>
-          </a>
+        <li className={`${pathname.match('/mentee') ? 'menu-item active' : 'menu-item'}`}>
+          <Link to="/mentee" className="menu-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              style={{
+                fill: "rgba(0, 0, 0, 1)", transform: "",
+                //  msfilter: "" 
+              }}
+            >
+              <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm9-8.586 6 6V15l.001 5H6v-9.585l6-6.001z" />
+              <path d="M12 17c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z" />
+            </svg>
+
+            <div data-i18n="Analytics">Mentee</div>
+          </Link>
         </li>
-        <li className="menu-item">
-          <a
-            href="auth-register-basic.html"
-            className="menu-link"
-            target="_blank"
-          >
-            <div data-i18n="Basic">Register</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a
-            href="auth-forgot-password-basic.html"
-            className="menu-link"
-            target="_blank"
-          >
-            <div data-i18n="Basic">Forgot Password</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li className="menu-item">
-      <a 
-    //   href="javascript:void(0);"
-       className="menu-link menu-toggle">
-        <i className="menu-icon tf-icons bx bx-cube-alt" />
-        <div data-i18n="Misc">Misc</div>
-      </a>
-      <ul className="menu-sub">
-        <li className="menu-item">
-          <a href="pages-misc-error.html" className="menu-link">
-            <div data-i18n="Error">Error</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a href="pages-misc-under-maintenance.html" className="menu-link">
-            <div data-i18n="Under Maintenance">Under Maintenance</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-  
-    {/* <li className="menu-item">
-      <a href="icons-boxicons.html" className="menu-link">
-        <i className="menu-icon tf-icons bx bx-crown" />
-        <div data-i18n="Boxicons">Boxicons</div>
-      </a>
-    </li> */}
-    {/* Forms & Tables */}
-    {/* <li className="menu-header small text-uppercase">
-      <span className="menu-header-text">Forms &amp; Tables</span>
-    </li> */}
-    {/* Forms */}
-    {/* <li className="menu-item">
-      <a href="javascript:void(0);" className="menu-link menu-toggle">
-        <i className="menu-icon tf-icons bx bx-detail" />
-        <div data-i18n="Form Elements">Form Elements</div>
-      </a>
-      <ul className="menu-sub">
-        <li className="menu-item">
-          <a href="forms-basic-inputs.html" className="menu-link">
-            <div data-i18n="Basic Inputs">Basic Inputs</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a href="forms-input-groups.html" className="menu-link">
-            <div data-i18n="Input groups">Input groups</div>
-          </a>
+        <li className={`${pathname.match('/class') ? 'menu-item active' : 'menu-item'}`}>
+          <Link to="/class" className="menu-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              style={{
+                fill: "rgba(0, 0, 0, 1)", transform: "",
+                //  msfilter: "" 
+              }}
+            >
+              <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm9-8.586 6 6V15l.001 5H6v-9.585l6-6.001z" />
+              <path d="M12 17c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z" />
+            </svg>
+
+            <div data-i18n="Analytics">Class</div>
+          </Link>
         </li>
       </ul>
-    </li> */}
-    {/* <li className="menu-item">
-      <a href="javascript:void(0);" className="menu-link menu-toggle">
-        <i className="menu-icon tf-icons bx bx-detail" />
-        <div data-i18n="Form Layouts">Form Layouts</div>
-      </a>
-      <ul className="menu-sub">
-        <li className="menu-item">
-          <a href="form-layouts-vertical.html" className="menu-link">
-            <div data-i18n="Vertical Form">Vertical Form</div>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a href="form-layouts-horizontal.html" className="menu-link">
-            <div data-i18n="Horizontal Form">Horizontal Form</div>
-          </a>
-        </li>
-      </ul>
-    </li> */}
-    {/* Tables */}
-    {/* <li className="menu-item">
-      <a href="tables-basic.html" className="menu-link">
-        <i className="menu-icon tf-icons bx bx-table" />
-        <div data-i18n="Tables">Tables</div>
-      </a>
-    </li> */}
-    
-  </ul>
-</aside>
+    </aside>
 
   )
 }

@@ -1,77 +1,146 @@
-// src/components/header.tsx
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import  { useState } from 'react'
+import {Helmet} from "react-helmet";
 export const Header = () => {
- return (
-  <header>
-   <div className="collapse bg-dark" id="navbarHeader">
-    <div className="container">
-     <div className="row">
-      <div className="col-sm-8 col-md-7 py-4">
-       <h4 className="text-white">About</h4>
-       <p className="text-muted">
-        Add some information about the album below, the author, or any
-        other background context. Make it a few sentences long so folks
-        can pick up some informative tidbits. Then, link them off to
-        some social networking sites or contact information.
-       </p>
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  return (
+    <nav
+      className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+      id="layout-navbar"
+      style={{ background:'white' }}
+    >
+       <Helmet htmlAttributes={{ class:`light-style layout-menu-fixed ${isOpen?`layout-menu-expanded`:''}` }}/>
+      <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none " >
+        <a className="nav-item nav-link px-0 me-xl-4" 
+        // href="javascript:void(0)" 
+        onClick={()=>setIsOpen(!isOpen)}
+        >
+        
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={24}
+            height={24}
+            viewBox="0 0 24 24"
+            style={{ fill: "rgba(0, 0, 0, 1)", transform: "",
+            //  msfilter: "" 
+            }}
+          >
+            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+          </svg>
+
+        </a>
       </div>
-      <div className="col-sm-4 offset-md-1 py-4">
-       <h4 className="text-white">Contact</h4>
-       <ul className="list-unstyled">
-        <li>
-         <a href="#" className="text-white">
-          Follow on Twitter
-         </a>
-        </li>
-        <li>
-         <a href="#" className="text-white">
-          Like on Facebook
-         </a>
-        </li>
-        <li>
-         <a href="#" className="text-white">
-          Email me
-         </a>
-        </li>
-       </ul>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div className="navbar navbar-dark bg-dark box-shadow">
-    <div className="container d-flex justify-content-between">
-     <a href="#" className="navbar-brand d-flex align-items-center">
-      <svg
-       xmlns="http://www.w3.org/2000/svg"
-       width="20"
-       height="20"
-       viewBox="0 0 24 24"
-       fill="none"
-       stroke="currentColor"
-       strokeWidth="2"
-       strokeLinecap="round"
-       strokeLinejoin="round"
-       className="mr-2"
+      <div
+        className="navbar-nav-right d-flex align-items-center"
+        id="navbar-collapse"
+        style={{ backgroundColor: 'white', }}
       >
-       <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-       <circle cx="12" cy="13" r="4" />
-      </svg>
-      <strong>Album</strong>
-     </a>
-     <button
-      className="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarHeader"
-      aria-controls="navbarHeader"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-     >
-      <span className="navbar-toggler-icon" />
-     </button>
-    </div>
-   </div>
-  </header>
- );
+        {/* Search */}
+        <div className="navbar-nav align-items-center">
+          <div className="nav-item d-flex align-items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              style={{
+                fill: "rgba(0, 0, 0, 1)", transform: "",
+                //  msfilter: "" 
+              }}
+            >
+              <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z" />
+              <path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z" />
+            </svg>
+
+            <input
+              type="text"
+              className="form-control border-0 shadow-none"
+              placeholder="Search..."
+              aria-label="Search..."
+            />
+          </div>
+        </div>
+        {/* /Search */}
+        <ul className="navbar-nav flex-row align-items-center ms-auto">
+          {/* Place this tag where you want the button to render. */}
+          <li className="nav-item lh-1 me-3">
+            <span />
+          </li>
+          {/* User */}
+          <li className="nav-item navbar-dropdown dropdown-user dropdown">
+            <a
+              className="nav-link dropdown-toggle hide-arrow"
+              href="javascript:void(0);"
+              data-bs-toggle="dropdown"
+            >
+              <div className="avatar avatar-online">
+                <img
+                  src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template-free/assets/img/avatars/1.png"
+                  alt=""
+                  className="w-px-40 h-auto rounded-circle"
+                />
+              </div>
+            </a>
+            <ul className="dropdown-menu dropdown-menu-end">
+              <li>
+                <a className="dropdown-item" href="#">
+                  <div className="d-flex">
+                    <div className="flex-shrink-0 me-3">
+                      <div className="avatar avatar-online">
+                        <img
+                          src="../assets/img/avatars/1.png"
+                          alt=""
+                          className="w-px-40 h-auto rounded-circle"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-grow-1">
+                      <span className="fw-semibold d-block">John Doe</span>
+                      <small className="text-muted">Admin</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div className="dropdown-divider" />
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  <i className="bx bx-user me-2" />
+                  <span className="align-middle">My Profile</span>
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  <i className="bx bx-cog me-2" />
+                  <span className="align-middle">Settings</span>
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  <span className="d-flex align-items-center align-middle">
+                    <i className="flex-shrink-0 bx bx-credit-card me-2" />
+                    <span className="flex-grow-1 align-middle">Billing</span>
+                    <span className="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">
+                      4
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <div className="dropdown-divider" />
+              </li>
+              <li>
+                <a className="dropdown-item" href="auth-login-basic.html">
+                  <i className="bx bx-power-off me-2" />
+                  <span className="align-middle">Log Out</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {/*/ User */}
+        </ul>
+      </div>
+    </nav>
+
+  );
 };
