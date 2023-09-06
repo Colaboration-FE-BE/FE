@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
-
+import 'bootstrap/dist/css/bootstrap.css';
 import Navbar from "./component/Navbar";
+import DashboardPage from "./pages/DashboardPage";
 
 const App = () => {
   axios.defaults.baseURL = "https://fakestoreapi.com/";
@@ -9,7 +10,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Navbar greeting={""} onClick={function (): void {
+        <Route element={<DashboardPage/>} path="/"/>
+        {/* <Route element={<Navbar greeting={""} onClick={function (): void {
           throw new Error("Function not implemented.");
         } } toggleSettingsDropdown={function (): void {
           throw new Error("Function not implemented.");
@@ -17,7 +19,7 @@ const App = () => {
           throw new Error("Function not implemented.");
         } } handleLogout={function (): void {
           throw new Error("Function not implemented.");
-        } } />} path="/" />
+        } } />} path="/" /> */}
 
       </Routes>
     </BrowserRouter>
